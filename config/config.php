@@ -1,12 +1,17 @@
 <?php
 // Configuración de la base de datos
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'survey_db');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_NAME', 'u220252535_encuesta');
+define('DB_USER', 'u220252535_encuesta');
+define('DB_PASS', 'Lm@03051971');
 
+#define('DB_NAME', 'survey_db');
+#define('DB_USER', 'root');
+#define('DB_PASS', '');
 // Rutas base
-define('BASE_URL', 'http://localhost/survey_app');
+define('BASE_URL', 'https://encuesta-app.temalitoclean.com/');
+#define('BASE_URL', 'http://localhost/survey_app');
+
 define('ROOT_PATH', dirname(__DIR__) . '/');
 
 // Configuración de zona horaria

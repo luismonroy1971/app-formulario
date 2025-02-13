@@ -2,9 +2,12 @@
 // config/Database.php
 class Database {
     private $host = 'localhost';
+    #private $db_name = 'u220252535_encuesta';
+    #private $username = 'u220252535_encuesta';
     private $db_name = 'survey_db';
     private $username = 'root';
     private $password = '';
+    #private $password = 'Lm@03051971';
     private $conn;
 
     public function connect() {

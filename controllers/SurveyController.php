@@ -21,30 +21,57 @@ class SurveyController {
             header('Location: index.php');
             return;
         }
-
-        $applications = $_POST['applications'] ?? [];
+    
+        $has_used = $_POST['has_used'];
         $success = true;
-
-        foreach ($applications as $appId) {
+        $fecha_registro = date('Y-m-d H:i:s');
+    
+        if ($has_used === 'No') {
+            // Guardar encuesta con razones de no uso
             $surveyData = [
                 'doc_identidad' => $_POST['doc_identidad'],
-                'id_aplicacion' => $appId,
-                'frecuencia_uso' => $_POST["frecuencia_uso_$appId"],
-                'recibio_capacitacion' => $_POST["capacitacion_$appId"] ?? 'No',
-                'tiene_fallas' => $_POST["fallas_$appId"] ?? 'No',
-                'cubre_necesidades' => $_POST["cubre_necesidades_$appId"] ?? 'No',
-                'tiempo_ahorro' => $_POST["tiempo_ahorro_$appId"],
-                'tiempo_unidad' => $_POST["tiempo_unidad_$appId"],
-                'agrega_valor' => $_POST["agrega_valor_$appId"] ?? 'No',
-                'recomendaria' => $_POST["recomendaria_$appId"] ?? 'No'
+                'ha_usado' => 'No',
+                'razon_no_uso_1' => $_POST['razon_no_uso_1'] ?? null,
+                'razon_no_uso_2' => $_POST['razon_no_uso_2'] ?? null,
+                'razon_no_uso_3' => $_POST['razon_no_uso_3'] ?? null,
+                'fecha_registro' => $fecha_registro
             ];
-
-            if (!$this->surveyModel->save($surveyData)) {
+    
+            if (!$this->surveyModel->saveNoUsage($surveyData)) {
                 $success = false;
-                break;
+            }
+        } else {
+            // Guardar encuesta normal con aplicaciones seleccionadas
+            $applications = $_POST['applications'] ?? [];
+            
+            foreach ($applications as $appId) {
+                $surveyData = [
+                    'doc_identidad' => $_POST['doc_identidad'],
+                    'ha_usado' => 'Si',
+                    'id_aplicacion' => $appId,
+                    'como_se_entero' => $_POST["como_se_entero_{$appId}"],
+                    'frecuencia_uso' => $_POST["frecuencia_uso_{$appId}"],
+                    'recibio_capacitacion' => $_POST["capacitacion_{$appId}"] ?? 'No',
+                    'utilidad_capacitacion' => ($_POST["capacitacion_{$appId}"] === 'Si') ? 
+                        $_POST["utilidad_capacitacion_{$appId}"] : null,
+                    'facilidad_uso' => ($_POST["capacitacion_{$appId}"] === 'Si') ? 
+                        $_POST["facilidad_uso_{$appId}"] : null,
+                    'tiene_fallas' => $_POST["fallas_{$appId}"] ?? 'No',
+                    'cubre_necesidades' => $_POST["cubre_necesidades_{$appId}"] ?? 'No',
+                    'tiempo_ahorro' => $_POST["tiempo_ahorro_{$appId}"],
+                    'tiempo_unidad' => $_POST["tiempo_unidad_{$appId}"],
+                    'agrega_valor' => $_POST["agrega_valor_{$appId}"] ?? 'No',
+                    'recomendaria' => $_POST["recomendaria_{$appId}"] ?? 'No',
+                    'fecha_registro' => $fecha_registro
+                ];
+    
+                if (!$this->surveyModel->save($surveyData)) {
+                    $success = false;
+                    break;
+                }
             }
         }
-
+    
         if ($success) {
             header('Location: index.php?success=1');
         } else {
