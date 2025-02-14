@@ -148,6 +148,8 @@
 
         <form id="surveyForm" method="POST" action="index.php?action=save">
             <!-- Sección de identificación -->
+             <!-- Agregar esto dentro del form -->
+            <input type="hidden" name="fecha_local" id="fecha_local">
             <div class="card mb-4">
                 <div class="card-body">
                     <h3 class="card-title">Identificación del Colaborador</h3>
@@ -411,6 +413,18 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
+
+            $('#surveyForm').on('submit', function() {
+                const now = new Date();
+                // Formato: YYYY-MM-DD HH:mm:ss
+                const fechaLocal = now.getFullYear() + '-' + 
+                                String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                                String(now.getDate()).padStart(2, '0') + ' ' + 
+                                String(now.getHours()).padStart(2, '0') + ':' + 
+                                String(now.getMinutes()).padStart(2, '0') + ':' + 
+                                String(now.getSeconds()).padStart(2, '0');
+                $('#fecha_local').val(fechaLocal);
+            });
             // Manejo del mensaje de éxito
             const successMessage = $('#successMessage');
             if (successMessage.length) {

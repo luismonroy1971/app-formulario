@@ -24,7 +24,7 @@ class SurveyController {
     
         $has_used = $_POST['has_used'];
         $success = true;
-        $fecha_registro = date('Y-m-d H:i:s');
+        $fecha_registro = $_POST['fecha_local'];
     
         if ($has_used === 'No') {
             // Guardar encuesta con razones de no uso
