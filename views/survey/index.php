@@ -285,86 +285,212 @@
             </div>
 
             <!-- Preguntas adicionales para cuando recibió capacitación -->
-            <div class="capacitacion-preguntas-APP_ID hidden">
-            <div class="mb-3">
-                <label class="form-label">¿Te resultó útil para aprender a usar la aplicación?</label>
-                <div class="range-container">
-                    <input type="range" class="form-range" min="0" max="10" step="1" 
-                        name="utilidad_capacitacion_APP_ID" value="5">
-                    <div class="range-numbers">
-                        <span>0</span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
-                        <span>6</span>
-                        <span>7</span>
-                        <span>8</span>
-                        <span>9</span>
-                        <span>10</span>
-                    </div>
-                    <div class="range-labels">
-                        <span>Nada útil</span>
-                        <span>Muy útil</span>
-                    </div>
-                    <div class="value-display">
-                        Valor: <span class="utilidad-value">5</span>
+            <div class="capacitacion-preguntas-si-APP_ID hidden">
+                <div class="mb-3">
+                    <label class="form-label">¿Te resultó útil para aprender a usar la aplicación?</label>
+                    <div class="range-container">
+                        <input type="range" class="form-range" min="0" max="10" step="1" 
+                            name="utilidad_capacitacion_APP_ID" value="5">
+                        <div class="range-numbers">
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                        </div>
+                        <div class="range-labels">
+                            <span>Nada útil</span>
+                            <span>Muy útil</span>
+                        </div>
+                        <div class="value-display">
+                            Valor: <span class="utilidad-value">5</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="mb-3">
-                <label class="form-label">¿Cómo calificarías la facilidad de uso de la aplicación?</label>
-                <div class="range-container">
-                    <input type="range" class="form-range" min="0" max="10" step="1" 
-                        name="facilidad_uso_APP_ID" value="5">
-                    <div class="range-numbers">
-                        <span>0</span>
-                        <span>1</span>
-                        <span>2</span>
-                        <span>3</span>
-                        <span>4</span>
-                        <span>5</span>
-                        <span>6</span>
-                        <span>7</span>
-                        <span>8</span>
-                        <span>9</span>
-                        <span>10</span>
-                    </div>
-                    <div class="range-labels">
-                        <span>Malo</span>
-                        <span>Muy bueno</span>
-                    </div>
-                    <div class="value-display">
-                        Valor: <span class="facilidad-value">5</span>
+            <!-- Preguntas adicionales para cuando NO recibió capacitación -->
+            <div class="capacitacion-preguntas-no-APP_ID hidden">
+                <div class="mb-3">
+                    <label class="form-label">¿Qué aspectos te gustaría reforzar?</label>
+                    <textarea class="form-control" name="aspectos_reforzar_APP_ID" rows="3" 
+                            placeholder="Describe los aspectos que te gustaría reforzar"></textarea>
+                </div>
+            </div>
+
+            <!-- Pregunta común para ambos casos -->
+            <div class="facilidad-uso-APP_ID hidden">
+                <div class="mb-3">
+                    <label class="form-label">¿Cómo calificarías la facilidad de uso de la aplicación?</label>
+                    <div class="range-container">
+                        <input type="range" class="form-range" min="0" max="10" step="1" 
+                            name="facilidad_uso_APP_ID" value="5">
+                        <div class="range-numbers">
+                            <span>0</span>
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                        </div>
+                        <div class="range-labels">
+                            <span>Malo</span>
+                            <span>Muy bueno</span>
+                        </div>
+                        <div class="value-display">
+                            Valor: <span class="facilidad-value">5</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
 
+            <!-- Reemplazar la sección de fallas en el template -->
             <div class="mb-3">
                 <label class="form-label">¿Has notado alguna falla en la aplicación después de su implementación?</label>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="fallas_APP_ID" value="Si" required>
+                    <input type="radio" class="form-check-input fallas-radio" name="fallas_APP_ID" 
+                           value="Si" required data-app-id="APP_ID">
                     <label class="form-check-label">Sí</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="fallas_APP_ID" value="No">
+                    <input type="radio" class="form-check-input fallas-radio" name="fallas_APP_ID" 
+                           value="No" data-app-id="APP_ID">
                     <label class="form-check-label">No</label>
                 </div>
             </div>
 
-            <div class="mb-3">
+            <!-- Preguntas adicionales cuando hay fallas (Sí) -->
+            <div class="fallas-si-preguntas-APP_ID hidden">
+                <div class="mb-3">
+                    <label class="form-label">¿Se presentan de manera remota?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input fallas-remoto-radio" 
+                               name="fallas_remoto_APP_ID" value="Si" data-app-id="APP_ID">
+                        <label class="form-check-label">Sí</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input fallas-remoto-radio" 
+                               name="fallas_remoto_APP_ID" value="No" data-app-id="APP_ID">
+                        <label class="form-check-label">No</label>
+                    </div>
+                </div>
+
+                <!-- Frecuencia de errores (solo si es remoto) -->
+                <div class="fallas-frecuencia-APP_ID hidden mb-3">
+                    <label class="form-label">¿Con qué frecuencia ocurren estos errores?</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="fallas_frecuencia_APP_ID" 
+                               min="0" max="100" step="1" placeholder="Ingrese el porcentaje">
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+
+                <!-- Tipo de falla -->
+                <div class="mb-3">
+                    <label class="form-label">¿Qué tipo de falla has experimentado en la aplicación?</label>
+                    <select class="form-select fallas-tipo-select" name="fallas_tipo_APP_ID" data-app-id="APP_ID">
+                        <option value="">Seleccione una opción</option>
+                        <option value="paraliza">Aplicación se paraliza y deja de responder</option>
+                        <option value="incorrectos">Genera resultados incorrectos</option>
+                        <option value="mensajes">Mensajes de errores sin explicación clara</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+
+                <!-- Campo para especificar otro tipo de falla -->
+                <div class="fallas-otro-APP_ID hidden mb-3">
+                    <label class="form-label">Especifique el tipo de falla:</label>
+                    <textarea class="form-control" name="fallas_otro_tipo_APP_ID" rows="2" 
+                             placeholder="Describa el tipo de falla"></textarea>
+                </div>
+            </div>
+
+            <!-- Preguntas adicionales cuando no hay fallas (No) -->
+            <div class="fallas-no-preguntas-APP_ID hidden">
+                <div class="mb-3">
+                    <label class="form-label">¿La aplicación funciona correctamente en todos tus dispositivos que usas?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input dispositivos-radio" 
+                               name="funciona_dispositivos_APP_ID" value="Si" data-app-id="APP_ID">
+                        <label class="form-check-label">Sí</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input dispositivos-radio" 
+                               name="funciona_dispositivos_APP_ID" value="No" data-app-id="APP_ID">
+                        <label class="form-check-label">No</label>
+                    </div>
+                </div>
+
+                <!-- Campo para especificar problema en dispositivos -->
+                <div class="dispositivos-problema-APP_ID hidden mb-3">
+                    <label class="form-label">¿Cuál es, y qué ocurre?</label>
+                    <textarea class="form-control" name="dispositivos_problema_APP_ID" rows="2" 
+                             placeholder="Describa el dispositivo y el problema"></textarea>
+                </div>
+            </div>
+
+<!-- Reemplazar la sección de necesidades en el template -->
+<div class="mb-3">
                 <label class="form-label">¿La aplicación cubre las necesidades para las que fue creada?</label>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="cubre_necesidades_APP_ID" value="Si" required>
+                    <input type="radio" class="form-check-input necesidades-radio" 
+                           name="cubre_necesidades_APP_ID" value="Si" required data-app-id="APP_ID">
                     <label class="form-check-label">Sí</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="cubre_necesidades_APP_ID" value="No">
+                    <input type="radio" class="form-check-input necesidades-radio" 
+                           name="cubre_necesidades_APP_ID" value="No" data-app-id="APP_ID">
                     <label class="form-check-label">No</label>
                 </div>
+            </div>
+
+            <!-- Preguntas adicionales cuando sí cubre necesidades -->
+            <div class="necesidades-si-preguntas-APP_ID hidden">
+                <div class="mb-3">
+                    <label class="form-label">¿Te ha ayudado a reducir errores o reprocesos en tu trabajo?</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input reduce-errores-radio" 
+                               name="reduce_errores_APP_ID" value="Si" data-app-id="APP_ID">
+                        <label class="form-check-label">Sí</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input reduce-errores-radio" 
+                               name="reduce_errores_APP_ID" value="No" data-app-id="APP_ID">
+                        <label class="form-check-label">No</label>
+                    </div>
+                </div>
+
+                <!-- Campo para describir reducción de errores -->
+                <div class="reduce-errores-si-APP_ID hidden mb-3">
+                    <label class="form-label">¿Puedes describir brevemente?</label>
+                    <textarea class="form-control" name="descripcion_reduce_errores_APP_ID" 
+                             rows="2" placeholder="Describe cómo ha ayudado a reducir errores"></textarea>
+                </div>
+
+                <!-- Campo para sugerir optimizaciones -->
+                <div class="reduce-errores-no-APP_ID hidden mb-3">
+                    <label class="form-label">¿Qué crees que podríamos optimizar?</label>
+                    <textarea class="form-control" name="sugerencias_optimizacion_APP_ID" 
+                             rows="2" placeholder="Describe qué podríamos optimizar"></textarea>
+                </div>
+            </div>
+
+            <!-- Preguntas adicionales cuando no cubre necesidades -->
+            <div class="necesidades-no-preguntas-APP_ID hidden mb-3">
+                <label class="form-label">¿Qué funcionalidades consideras que podría mejorar o agregar?</label>
+                <textarea class="form-control" name="mejoras_funcionalidades_APP_ID" 
+                         rows="2" placeholder="Describe las funcionalidades que se podrían mejorar o agregar"></textarea>
             </div>
 
             <div class="mb-3">
@@ -384,29 +510,116 @@
                 </div>
             </div>
 
-            <div class="mb-3">
+<!-- Reemplazar la sección de valor agregado en el template -->
+<div class="mb-3">
                 <label class="form-label">¿Consideras que la aplicación añade valor a tu trabajo?</label>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="agrega_valor_APP_ID" value="Si" required>
+                    <input type="radio" class="form-check-input valor-radio" 
+                           name="agrega_valor_APP_ID" value="Si" required data-app-id="APP_ID">
                     <label class="form-check-label">Sí</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="agrega_valor_APP_ID" value="No">
+                    <input type="radio" class="form-check-input valor-radio" 
+                           name="agrega_valor_APP_ID" value="No" data-app-id="APP_ID">
                     <label class="form-check-label">No</label>
                 </div>
             </div>
 
+            <!-- Preguntas adicionales cuando sí agrega valor -->
+            <div class="valor-si-preguntas-APP_ID hidden">
+                <!-- Valor en términos de calidad -->
+                <div class="mb-3">
+                    <label class="form-label">¿Cuánto valor ha agregado en términos de calidad?</label>
+                    <div class="range-container">
+                        <input type="range" class="form-range" min="1" max="10" step="1" 
+                               name="valor_calidad_APP_ID" value="5">
+                        <div class="range-numbers">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                        </div>
+                        <div class="range-labels">
+                            <span>Más baja</span>
+                            <span>Más alta</span>
+                        </div>
+                        <div class="value-display">
+                            Valor: <span class="calidad-value">5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Valor en términos de tiempo -->
+                <div class="mb-3">
+                    <label class="form-label">¿Cuánto valor ha agregado en términos de tiempo?</label>
+                    <div class="range-container">
+                        <input type="range" class="form-range" min="1" max="10" step="1" 
+                               name="valor_tiempo_APP_ID" value="5">
+                        <div class="range-numbers">
+                            <span>1</span>
+                            <span>2</span>
+                            <span>3</span>
+                            <span>4</span>
+                            <span>5</span>
+                            <span>6</span>
+                            <span>7</span>
+                            <span>8</span>
+                            <span>9</span>
+                            <span>10</span>
+                        </div>
+                        <div class="range-labels">
+                            <span>Más baja</span>
+                            <span>Más alta</span>
+                        </div>
+                        <div class="value-display">
+                            Valor: <span class="tiempo-value">5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preguntas adicionales cuando no agrega valor -->
+            <div class="valor-no-preguntas-APP_ID hidden mb-3">
+                <label class="form-label">¿Por qué consideras que la aplicación no ha agregado valor a tu trabajo?</label>
+                <textarea class="form-control" name="razon_no_valor_APP_ID" 
+                         rows="2" placeholder="Explica por qué la aplicación no ha agregado valor"></textarea>
+            </div>
+
+            <!-- Reemplazar la sección de recomendación en el template -->
             <div class="mb-3">
                 <label class="form-label">¿Recomendarías esta aplicación a un compañero de tu área?</label>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="recomendaria_APP_ID" value="Si" required>
+                    <input type="radio" class="form-check-input recomendacion-radio" 
+                           name="recomendaria_APP_ID" value="Si" required data-app-id="APP_ID">
                     <label class="form-check-label">Sí</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="recomendaria_APP_ID" value="No">
+                    <input type="radio" class="form-check-input recomendacion-radio" 
+                           name="recomendaria_APP_ID" value="No" data-app-id="APP_ID">
                     <label class="form-check-label">No</label>
                 </div>
             </div>
+
+            <!-- Preguntas adicionales cuando sí recomienda -->
+            <div class="recomendacion-si-preguntas-APP_ID hidden mb-3">
+                <label class="form-label">¿En qué aspectos quisieras que la aplicación mejore?</label>
+                <textarea class="form-control" name="aspectos_mejora_APP_ID" 
+                         rows="2" placeholder="Describe los aspectos que podrían mejorar"></textarea>
+            </div>
+
+            <!-- Preguntas adicionales cuando no recomienda -->
+            <div class="recomendacion-no-preguntas-APP_ID hidden mb-3">
+                <label class="form-label">¿Por qué?</label>
+                <textarea class="form-control" name="razon_no_recomienda_APP_ID" 
+                         rows="2" placeholder="Explica por qué no recomendarías la aplicación"></textarea>
+            </div>
+
         </div>
     </template>
 
@@ -477,21 +690,134 @@
                 }
             });
 
-            // Agregar esto dentro del $(document).ready(function() { ... })
+            // Manejo de respuesta a recomendación
+            $(document).on('change', '.recomendacion-radio', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                // Ocultar todas las secciones primero
+                $(`.recomendacion-si-preguntas-${appId}`).addClass('hidden');
+                $(`.recomendacion-no-preguntas-${appId}`).addClass('hidden');
+                
+                // Mostrar la sección correspondiente y resetear campos
+                if (value === 'Si') {
+                    $(`.recomendacion-si-preguntas-${appId}`).removeClass('hidden');
+                    // Resetear campos
+                    $(`textarea[name="aspectos_mejora_${appId}"]`).val('');
+                    $(`textarea[name="razon_no_recomienda_${appId}"]`).val('');
+                } else {
+                    $(`.recomendacion-no-preguntas-${appId}`).removeClass('hidden');
+                    // Resetear campos
+                    $(`textarea[name="aspectos_mejora_${appId}"]`).val('');
+                    $(`textarea[name="razon_no_recomienda_${appId}"]`).val('');
+                }
+            });
+
+        // Manejo de respuesta a valor agregado
+        $(document).on('change', '.valor-radio', function() {
+            const appId = $(this).data('app-id');
+            const value = $(this).val();
+            
+            // Ocultar todas las secciones primero
+            $(`.valor-si-preguntas-${appId}`).addClass('hidden');
+            $(`.valor-no-preguntas-${appId}`).addClass('hidden');
+            
+            // Mostrar la sección correspondiente
+            if (value === 'Si') {
+                $(`.valor-si-preguntas-${appId}`).removeClass('hidden');
+                // Resetear campos
+                $(`input[name="valor_calidad_${appId}"]`).val(5);
+                $(`input[name="valor_tiempo_${appId}"]`).val(5);
+                $(`.calidad-value`).text('5');
+                $(`.tiempo-value`).text('5');
+                $(`textarea[name="razon_no_valor_${appId}"]`).val('');
+            } else {
+                $(`.valor-no-preguntas-${appId}`).removeClass('hidden');
+                // Resetear campos
+                $(`textarea[name="razon_no_valor_${appId}"]`).val('');
+            }
+        });
+
+        // Actualizar valores mostrados en las escalas
+        $(document).on('input', 'input[name^="valor_calidad_"]', function() {
+            const value = $(this).val();
+            $(this).closest('.range-container').find('.calidad-value').text(value);
+        });
+
+        $(document).on('input', 'input[name^="valor_tiempo_"]', function() {
+            const value = $(this).val();
+            $(this).closest('.range-container').find('.tiempo-value').text(value);
+        });
 
             // Manejo de la visualización de preguntas de capacitación
             $(document).on('change', '.capacitacion-radio', function() {
                 const appId = $(this).data('app-id');
                 const value = $(this).val();
+                
+                // Ocultar todas las secciones primero
+                $(`.capacitacion-preguntas-si-${appId}`).addClass('hidden');
+                $(`.capacitacion-preguntas-no-${appId}`).addClass('hidden');
+                
+                // Mostrar la sección correspondiente
                 if (value === 'Si') {
-                    $(`.capacitacion-preguntas-${appId}`).removeClass('hidden');
-                } else {
-                    $(`.capacitacion-preguntas-${appId}`).addClass('hidden');
+                    $(`.capacitacion-preguntas-si-${appId}`).removeClass('hidden');
+                    $(`.facilidad-uso-${appId}`).removeClass('hidden');
+                    // Resetear valores
                     $(`input[name="utilidad_capacitacion_${appId}"]`).val(5);
                     $(`input[name="facilidad_uso_${appId}"]`).val(5);
+                    $(`textarea[name="aspectos_reforzar_${appId}"]`).val('');
+                } else {
+                    $(`.capacitacion-preguntas-no-${appId}`).removeClass('hidden');
+                    $(`.facilidad-uso-${appId}`).removeClass('hidden');
+                    // Resetear valores
+                    $(`input[name="facilidad_uso_${appId}"]`).val(5);
+                    $(`textarea[name="aspectos_reforzar_${appId}"]`).val('');
                 }
             });
 
+            // Manejo de respuesta a necesidades cubiertas
+            $(document).on('change', '.necesidades-radio', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                // Ocultar todas las secciones primero
+                $(`.necesidades-si-preguntas-${appId}`).addClass('hidden');
+                $(`.necesidades-no-preguntas-${appId}`).addClass('hidden');
+                $(`.reduce-errores-si-${appId}`).addClass('hidden');
+                $(`.reduce-errores-no-${appId}`).addClass('hidden');
+                
+                // Mostrar la sección correspondiente
+                if (value === 'Si') {
+                    $(`.necesidades-si-preguntas-${appId}`).removeClass('hidden');
+                    // Resetear campos
+                    $(`input[name="reduce_errores_${appId}"]`).prop('checked', false);
+                    $(`textarea[name="descripcion_reduce_errores_${appId}"]`).val('');
+                    $(`textarea[name="sugerencias_optimizacion_${appId}"]`).val('');
+                } else {
+                    $(`.necesidades-no-preguntas-${appId}`).removeClass('hidden');
+                    // Resetear campos
+                    $(`textarea[name="mejoras_funcionalidades_${appId}"]`).val('');
+                }
+            });
+
+            // Manejo de respuesta a reducción de errores
+            $(document).on('change', '.reduce-errores-radio', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                // Ocultar ambas secciones primero
+                $(`.reduce-errores-si-${appId}`).addClass('hidden');
+                $(`.reduce-errores-no-${appId}`).addClass('hidden');
+                
+                // Mostrar la sección correspondiente
+                if (value === 'Si') {
+                    $(`.reduce-errores-si-${appId}`).removeClass('hidden');
+                    $(`textarea[name="sugerencias_optimizacion_${appId}"]`).val('');
+                } else {
+                    $(`.reduce-errores-no-${appId}`).removeClass('hidden');
+                    $(`textarea[name="descripcion_reduce_errores_${appId}"]`).val('');
+                }
+            });
 
             // Manejo de la selección "¿Has usado alguna aplicación?"
             $('input[name="has_used"]').on('change', function() {
@@ -519,6 +845,72 @@
                 }
                 
                 updateSubmitButton();
+            });
+
+            // Agregar estos manejadores de eventos dentro de $(document).ready(function() { ... })
+
+            // Manejo de respuesta a fallas
+            $(document).on('change', '.fallas-radio', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                // Ocultar todas las secciones primero
+                $(`.fallas-si-preguntas-${appId}`).addClass('hidden');
+                $(`.fallas-no-preguntas-${appId}`).addClass('hidden');
+                
+                // Mostrar la sección correspondiente
+                if (value === 'Si') {
+                    $(`.fallas-si-preguntas-${appId}`).removeClass('hidden');
+                    // Resetear campos
+                    $(`input[name="fallas_remoto_${appId}"]`).prop('checked', false);
+                    $(`input[name="fallas_frecuencia_${appId}"]`).val('');
+                    $(`select[name="fallas_tipo_${appId}"]`).val('');
+                    $(`textarea[name="fallas_otro_tipo_${appId}"]`).val('');
+                } else {
+                    $(`.fallas-no-preguntas-${appId}`).removeClass('hidden');
+                    // Resetear campos
+                    $(`input[name="funciona_dispositivos_${appId}"]`).prop('checked', false);
+                    $(`textarea[name="dispositivos_problema_${appId}"]`).val('');
+                }
+            });
+
+            // Manejo de fallas remotas
+            $(document).on('change', '.fallas-remoto-radio', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                if (value === 'Si') {
+                    $(`.fallas-frecuencia-${appId}`).removeClass('hidden');
+                } else {
+                    $(`.fallas-frecuencia-${appId}`).addClass('hidden');
+                    $(`input[name="fallas_frecuencia_${appId}"]`).val('');
+                }
+            });
+
+            // Manejo de tipo de falla
+            $(document).on('change', '.fallas-tipo-select', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                if (value === 'otros') {
+                    $(`.fallas-otro-${appId}`).removeClass('hidden');
+                } else {
+                    $(`.fallas-otro-${appId}`).addClass('hidden');
+                    $(`textarea[name="fallas_otro_tipo_${appId}"]`).val('');
+                }
+            });
+
+            // Manejo de funcionamiento en dispositivos
+            $(document).on('change', '.dispositivos-radio', function() {
+                const appId = $(this).data('app-id');
+                const value = $(this).val();
+                
+                if (value === 'No') {
+                    $(`.dispositivos-problema-${appId}`).removeClass('hidden');
+                } else {
+                    $(`.dispositivos-problema-${appId}`).addClass('hidden');
+                    $(`textarea[name="dispositivos_problema_${appId}"]`).val('');
+                }
             });
 
             // Validación de campos requeridos para razones

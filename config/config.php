@@ -5,7 +5,7 @@ define('DB_NAME', 'u220252535_encuesta');
 define('DB_USER', 'u220252535_encuesta');
 define('DB_PASS', 'Lm@03051971');
 
-#define('DB_NAME', 'survey_db');
+#define('DB_NAME', 'encuesta_app');
 #define('DB_USER', 'root');
 #define('DB_PASS', '');
 // Rutas base

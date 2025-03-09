@@ -2,7 +2,7 @@
 // config/Database.php
 class Database {
     private $host = 'localhost';
-    private $db_name = 'survey_db';
+    private $db_name = 'encuesta_app';
     private $username = 'root';
     private $password = '';
     private $conn;
